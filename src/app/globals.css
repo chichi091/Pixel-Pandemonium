@@ -1,0 +1,256 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 67% 94%;
+    --foreground: 240 10% 3.9%;
+    --card: 240 67% 94%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 240 67% 94%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262 82% 57%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 20% 90%;
+    --secondary-foreground: 240 10% 9%;
+    --muted: 240 20% 90%;
+    --muted-foreground: 240 5% 45%;
+    --accent: 340 82% 52%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 10% 85%;
+    --input: 240 10% 88%;
+    --ring: 262 82% 57%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 240 20% 96%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 262 82% 57%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 340 82% 52%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 10% 85%;
+    --sidebar-ring: 262 82% 57%;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 262 72% 67%;
+    --primary-foreground: 262 80% 10%;
+    --secondary: 240 5% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 340 92% 62%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5% 14.9%;
+    --input: 240 5% 14.9%;
+    --ring: 262 72% 67%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 262 72% 67%;
+    --sidebar-primary-foreground: 262 80% 10%;
+    --sidebar-accent: 340 92% 62%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 262 72% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .cat-walk-animation .cat-frame-2 {
+    display: none;
+  }
+  .cat-walk-animation:hover .cat-frame-1 {
+    animation: cat-walk 0.3s infinite linear;
+  }
+
+  @keyframes cat-walk {
+    0%, 49.9% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .cat-walk-animation:hover .cat-frame-2 {
+    display: block;
+    animation: cat-walk-2 0.3s infinite linear;
+  }
+
+  @keyframes cat-walk-2 {
+    0%, 49.9% {
+      opacity: 0;
+    }
+    50%, 100% {
+      opacity: 1;
+    }
+  }
+
+  /* New Animal Styles */
+  .animal-wrapper {
+    position: relative;
+    height: 60px;
+    width: 92px;
+    transform: scale(0.6);
+  }
+
+  .animal-body, .animal-head, .animal-tail, .animal-front-legs, .animal-back-legs, .animal-leg {
+    position: absolute;
+    transition: all 0.5s;
+  }
+  
+  .animal-body {
+    height: 40.8px;
+    width: 91.7px;
+  }
+  .animal-head {
+    height: 61.2px;
+    width: 76.4px;
+    right: -10px;
+    top: -25px;
+    z-index: 10;
+  }
+
+  .animal-tail {
+    top: -25px;
+    height: 61.1px;
+    width: 25.5px;
+    transform-origin: bottom right;
+    animation: tail_motion 2s infinite;
+  }
+  
+  .animal-leg {
+    height: 30.5px;
+    width: 15.3px;
+    transform-origin: top center;
+  }
+  
+  .animal-front-legs, .animal-back-legs {
+    height: 30px;
+  }
+
+  .animal-front-legs {
+    width: 30px;
+    right: 5px;
+  }
+  
+  .animal-back-legs {
+    width: 25px;
+    left: 10px; 
+  }
+
+  .leg-one, .leg-three {
+    bottom: -20px;
+    right: 0;
+  }
+
+  .leg-two, .leg-four {
+    bottom: -20px;
+    left: 0;
+  }
+
+  .walk .leg-one, .walk .leg-three {
+    animation: 0.3s walk infinite;
+  }
+
+  .walk .leg-two, .walk .leg-four {
+    animation: 0.3s walk_alt infinite;
+  }
+
+  @keyframes walk {
+    0%,100% {transform: rotate(-10deg);}
+    50% {transform: rotate(10deg);}
+  }
+  
+  @keyframes walk_alt {
+    0%,100% {transform: rotate(10deg);}
+    50% {transform: rotate(-10deg);}
+  }
+
+  @keyframes tail_motion {
+    0%,100% {
+      left: -5px;
+      transform: rotate(0deg) scale(1); 
+    }
+    50% { 
+      left: -10px;
+      transform: rotate(-50deg) scale(-1,1); 
+    }
+  }
+
+  .animal.face-left {
+    transform: scaleX(-1);
+  }
+
+  /* Dog-specific tail */
+  .dog-tail {
+     animation: dog_tail_motion 1s infinite;
+  }
+
+  @keyframes dog_tail_motion {
+    0%,100% {
+      transform: rotate(20deg);
+    }
+    50% { 
+      transform: rotate(-20deg);
+    }
+  }
+
+  /* Balloon animation */
+  @keyframes float-up {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-120vh) translateX(var(--sway-x));
+      opacity: 0;
+    }
+  }
+  
+  .animate-float-up {
+    animation-name: float-up;
+    animation-timing-function: ease-in;
+  }
+
+  /* Meme Vault Wobble Animation */
+  @keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  .animate-wobble {
+    animation: wobble 0.5s ease-in-out;
+  }
+
+  /* Flipper Animation */
+  .flipped-screen {
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-in-out;
+  }
+}
